@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if messages %}
+    {% for message in messages%}
+        <div>
+        
+            <strong>{{message|safe}}</strong>
+        </div>
+    {% endfor %}
+{% else %} 
+{{order}}
+
+<form method="POST" enctype= "multipart/form-data">
+    {% csrf_token %}
+    </br>
+    <label><h3>Upload FILE HERE</h3></label></br>
+    <input type= "file" name ="file2"></br>
+    <p>only accepts csv files </p>
+    <button type= "submit">Upload</button>
+</form></br>
+<h3>{{message}}</h3>
+</br>
+<form method="POST" enctype= "multipart/form-data">
+    {% csrf_token %}
+    <label><h3>Upload the FILE for perticular Month Here</h3></label></br>
+    <input type= "file" name ="file3"></br>
+    <p>only accepts csv files </p></br>
+    <input type="month" name="selected_month">
+    <button type= "submit">Upload</button>
+    
+    
+</form>
+
+    
+{% endif %}
+
+{% endblock %}
